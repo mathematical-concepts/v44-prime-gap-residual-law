@@ -188,7 +188,7 @@ $$
 \sin\left(\frac{2\pi A}{T}\right) + \sin\left(\frac{2\pi B}{T}\right) = 2 \sin\left(\frac{\pi S}{2T}\right) \cos\left(\frac{\pi D}{2T}\right).
 $$
 
-Thus a symmetric oscillation in the two semi-gaps becomes an even-in-$D$ product in the $S,D$ coordinates.
+Thus a symmetric oscillation in the two semi-gaps becomes an even in \(D\) product in the $S,D$ coordinates.
 
 The empirically observed resonant term is written directly as
 
@@ -196,7 +196,7 @@ $$
 R_{45}(S,D;t) = \cos\left(\frac{\pi D}{45}\right) \left[ a(t)\sin\left(\frac{\pi S}{45}\right) + b(t)\cos\left(\frac{\pi S}{45}\right) \right].
 $$
 
-This structure was compared against a more flexible Full2D form containing both even and odd terms in $D$. The Full2D form did not materially improve performance, supporting the separable even-in-$D$ structure.
+This structure was compared against a more flexible Full2D form containing both even and odd terms in \(D\). The Full2D form did not materially improve performance, supporting the separable structure that is even in \(D\).
 
 ---
 

@@ -22,25 +22,39 @@ def ensure_dir(d):
     if not os.path.exists(d): os.makedirs(d)
 
 def plot_lambda_sweep():
-    """1. Lambda sweep Λ=30..55: Muestra el pico de resonancia calculando la Amplitud de Fourier."""
-    file_path = "data/v41c_coef_audit.csv"
-    if not os.path.exists(file_path): return
+    """1. Lambda sweep Λ=30..55: Shows the causal improvement peak at 45."""
+    file_path = "data/v41c_sweep_and_nulls.csv"
+    if not os.path.exists(file_path):
+        print(f"⚠️ Warning: {file_path} is missing. Make sure to put it in the data folder./")
+        return
 
-    df = pd.read_csv(file_path)
-    df['oracle_amplitude'] = np.sqrt(df['a_oracle']**2 + df['b_oracle']**2)
-    df_agg = df.groupby('Lambda')['oracle_amplitude'].mean().reset_index()
+    df = pd.read_csv(file_path, sep=',')
+
+    # Extract columns starting with 'L_' (excluding the ground truth 'L45_actual')
+    lambda_cols = [c for c in df.columns if c.startswith('L_') and c != 'L45_actual']
+
+    # Calculate the median improvement for each Lambda across all test blocks
+    median_improvements = df[lambda_cols].median()
+
+    # Create a clean DataFrame for the plotting engine
+    # We extract the numerical value of Lambda from the column name (e.g., 'L_30.0' -> 30.0)
+    lambdas = [float(c.split('_')[1]) for c in lambda_cols]
+    plot_df = pd.DataFrame({
+        'Lambda': lambdas,
+        'Improvement_Pct': median_improvements.values
+    })
 
     plt.figure(figsize=(8, 5))
-    sns.lineplot(data=df_agg, x='Lambda', y='oracle_amplitude', marker='o', color=colors[1], linewidth=2)
-    plt.axvline(45, color='red', linestyle='--', label='Λ = 45 (Period 30 Wheel)')
-    
-    plt.title("Fig 1: Resonance Sweep (Fourier Amplitude across Lambda)")
-    plt.xlabel("Lambda (Λ)")
-    plt.ylabel("Mean Oracle Amplitude $\\sqrt{a^2 + b^2}$")
+    sns.lineplot(data=plot_df, x='Lambda', y='Improvement_Pct', marker='o', color=colors[1], linewidth=2)
+    plt.axvline(45, color='red', linestyle='--', label='Λ = 45 (S,D Representation)')
+
+    plt.title("Fig 1: Median Causal Improvement vs Lambda")
+    plt.xlabel("Wavelength Lambda (Λ)")
+    plt.ylabel("Median Improvement over M3 (%)")
     plt.legend()
     plt.tight_layout()
     plt.savefig("figures/fig1_lambda_sweep.png", dpi=300)
-    print("✅ Fig 1 generated.")
+    print("✅ Fig 1 generated (Median Causal Improvement vs Lambda).")
 
 def plot_v44b_audit_overview():
     """2. V44b audit bar chart: Muestra el impacto macro (M3) vs micro (R45)."""

@@ -20,7 +20,7 @@ $$\Delta(S,D;p) = E_0(S) + U(S,D;t) + R_{45}(S,D;t)$$
 Where:
 1. **`M0`** = $E_0(S)$: Static geometric envelope.
 2. **`M3`** = $E_0(S) + U(S,D;t)$: Smooth scale-dependent drift (macroscopic expansion).
-3. **`R45`** = $R_{45}(S,D;t)$: Modular resonance anchored to a period of $\Lambda=45$ semi-gaps.
+3. **`R45`** = $R_{45}(S,D;t)$: Modular resonance with wavelength $\Lambda=45$ in the $S,D$ coordinate representation.
 
 ## Reproducibility and Usage
 
@@ -37,14 +37,14 @@ The script `v44_primes_predictor_frozen.py` contains the frozen asymptotic laws.
 python src/v44_primes_predictor_frozen.py --show-formula
 ```
 
-**2. Audit the Causal Validation:**
-To reproduce the tables from the paper against the controls (`SmoothNested`, `Full2D`, and `Null/D-shuffle`):
+**2. Audit the Frozen Model:**
+To verify the error reduction of the isolated Three-Layer equation (M0, M3, R45) on the provided sample data:
 ```bash
 python src/audit_v44b.py
 ```
 
 **3. Reproduce the Paper's Figures:**
-To generate the high-resolution charts used in the Whitepaper:
+To generate the high-resolution charts used in the Whitepaper, including the comparisons against historical controls (SmoothNested, Full2D, and Null/D-shuffle), the script uses the aggregated historical data provided in the data/ folder:
 ```bash
 python src/reproduce_figures.py
 ```
