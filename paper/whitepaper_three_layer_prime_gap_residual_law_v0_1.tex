@@ -1,0 +1,265 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{array}
+
+\title{A Three-Layer Empirical Residual Law for Consecutive Prime Gaps:\\ Drift and Modular Resonance}
+\author{Jose A. Cano Gregorio}
+\date{Version 0.1 draft}
+
+\newtheorem{conjecture}{Conjecture}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study the residual structure of consecutive prime-gap pairs after a causal sieve-inspired baseline model. For consecutive prime gaps
+\[
+g_1=p_{n+1}-p_n,\qquad g_2=p_{n+2}-p_{n+1},
+\]
+we introduce
+\[
+S=g_1+g_2,\qquad D=g_2-g_1,\qquad t=\log\log p_n.
+\]
+Empirically, the logarithmic residual admits a three-layer decomposition consisting of a static geometric envelope in \(S\), a smooth scale-dependent drift in \(S\) and \(D^2\), and an even modular resonance with wavelength \(\Lambda=45\). The resonant term survives rolling causal validation, geometric null controls, comparison against smooth polynomial alternatives, and comparison against a more flexible two-dimensional Fourier form. We present the resulting law as an empirical structural conjecture and discuss its limitations.
+\end{abstract}
+
+\section{Introduction}
+
+The distribution of prime numbers is commonly modeled through global asymptotic laws, local congruence constraints, and Hardy--Littlewood-type heuristics. Yet even after a strong sieve-inspired baseline is applied, local residuals in the geometry of consecutive prime gaps may contain structured information.
+
+This paper investigates the residual structure of pairs of consecutive prime gaps. The central question is not whether primes are deterministic, but whether the residual left by a reasonable causal sieve baseline contains reproducible structure beyond featureless noise.
+
+The empirical law suggested by the experiments reported here is
+\[
+\Delta(S,D;p)=E_0(S)+U(S,D;t)+R_{45}(S,D;t)+\mathcal{E}(S,D;p),
+\qquad t=\log\log p.
+\]
+
+\section{Definitions}
+
+Let \(p_n\) denote the \(n\)-th prime. Define consecutive gaps
+\[
+g_1=p_{n+1}-p_n,\qquad
+g_2=p_{n+2}-p_{n+1}.
+\]
+We use the coordinates
+\[
+S=g_1+g_2,\qquad D=g_2-g_1.
+\]
+It is also useful to introduce semi-gaps
+\[
+A=\frac{g_1}{2},\qquad B=\frac{g_2}{2}.
+\]
+Then
+\[
+A+B=\frac{S}{2},\qquad B-A=\frac{D}{2}.
+\]
+
+Let \(H(S,D;p)\) denote the observed empirical mass for gap-pair geometry in a block near scale \(p\), and let \(W_0(S,D;p)\) denote a causal baseline weight. The primary logarithmic residual is written as
+\[
+\Delta(S,D;p)=\log\frac{H(S,D;p)}{W_0(S,D;p)}.
+\]
+
+\section{Baseline and experimental protocol}
+
+The experiments are conducted in a rolling causal setting. Blocks are ordered by increasing prime scale. A component evaluated on a test block may only use information from earlier blocks.
+
+The primary metrics are RMS reduction and median improvement percentage relative to the specified baseline residual. The primary baseline in the reported experiments is the V15 causal logarithmic residual.
+
+\section{The three-layer residual law}
+
+The empirical law decomposes the residual into
+\[
+\Delta(S,D;p)=E_0(S)+U(S,D;t)+R_{45}(S,D;t)+\mathcal{E}(S,D;p).
+\]
+
+\subsection{Static envelope}
+
+The static envelope is modeled as
+\[
+E_0(S)=c_0+c_1\sqrt S+c_2\log(1+S)+c_3S^{-1/2}.
+\]
+
+\subsection{Smooth scale-dependent drift}
+
+The smooth drift is modeled as
+\[
+U(S,D;t)=u_0(t)+u_1(t)(S-\bar S_t)+u_2(t)(D^2-\overline{D^2}_t).
+\]
+
+\subsection{Modular resonance}
+
+After removing the smooth drift, a resonant component remains:
+\[
+R_{45}(S,D;t)
+=
+\cos\left(\frac{\pi D}{45}\right)
+\left[
+a(t)\sin\left(\frac{\pi S}{45}\right)
++
+b(t)\cos\left(\frac{\pi S}{45}\right)
+\right].
+\]
+
+\section{Trigonometric origin of the separable form}
+
+The separable \(S,D\) form arises naturally from symmetric oscillations in the semi-gap coordinates \(A\) and \(B\). Consider
+\[
+\sin\left(\frac{2\pi A}{T}\right)+\sin\left(\frac{2\pi B}{T}\right).
+\]
+Using
+\[
+\sin x+\sin y=2\sin\left(\frac{x+y}{2}\right)\cos\left(\frac{x-y}{2}\right),
+\]
+we obtain
+\[
+\sin\left(\frac{2\pi A}{T}\right)
++
+\sin\left(\frac{2\pi B}{T}\right)
+=
+2
+\sin\left(\frac{\pi S}{2T}\right)
+\cos\left(\frac{\pi D}{2T}\right).
+\]
+
+\section{Causal validation}
+
+Table~\ref{tab:v44b} summarizes the primary V44b audit.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrrr}
+\toprule
+Block & \(M3\) vs \(M0\) & \(R45\) vs \(M3\) & Smooth vs \(M3\) & Full2D vs \(M3\) & Null vs \(M3\)\\
+\midrule
+B07 & +26.87\% & +8.19\% & +0.16\% & +8.18\% & -11.07\%\\
+B08 & +32.37\% & +3.94\% & +0.09\% & +3.94\% & -8.25\%\\
+B09 & +38.17\% & +2.06\% & +0.17\% & +1.97\% & -2.77\%\\
+B10 & +38.71\% & +1.11\% & +0.20\% & +1.11\% & -0.34\%\\
+\bottomrule
+\end{tabular}
+\caption{Primary causal validation table. Improvements are percentage RMS reductions.}
+\label{tab:v44b}
+\end{table}
+
+The results support four empirical conclusions. First, the smooth drift \(M3=E_0+U\) is the dominant correction beyond the baseline. Second, \(R_{45}\) provides an additional positive causal correction in all tested blocks. Third, a smooth incremental extension using higher-order terms contributes only weakly. Fourth, a more flexible Full2D resonant model does not materially improve upon the separable \(R_{45}\), while a \(D\)-shuffle null destroys the resonant improvement.
+
+\section{Wavelength sweep}
+
+After removing the smooth drift, the resonant wavelength was scanned over a range of \(\Lambda\). The median improvement showed a local maximum around \(\Lambda=45\).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rr}
+\toprule
+\(\Lambda\) & Median improvement\\
+\midrule
+30 & +1.82\%\\
+35 & +3.26\%\\
+40 & +3.94\%\\
+44 & +4.18\%\\
+45 & +4.19\%\\
+46 & +4.17\%\\
+50 & +3.86\%\\
+60 & +2.45\%\\
+90 & +0.65\%\\
+\bottomrule
+\end{tabular}
+\caption{Representative wavelength sweep after removing the smooth drift.}
+\end{table}
+
+\section{Null controls and model comparison}
+
+The \(D\)-shuffle control disrupts the relationship between \(S\) and \(D\). In the primary audit, this control produced negative improvement, indicating that the resonant term depends on the true geometry of the gap pair.
+
+The separable resonance was compared to a more flexible Full2D form. The additional odd-in-\(D\) terms did not materially improve predictive performance. Smooth polynomial-like extensions of the drift also contributed only weakly relative to \(R_{45}\).
+
+\section{Empirical structural conjecture}
+
+\begin{conjecture}
+For consecutive prime-gap pairs over bounded gap ranges and with respect to an appropriate causal sieve baseline \(W_0\), the structured component of the logarithmic residual admits a decomposition
+\[
+\Delta(S,D;p)
+=
+E_0(S)
++
+U(S,D;\log\log p)
++
+R_{45}(S,D;\log\log p)
++
+\mathcal{E}(S,D;p),
+\]
+where \(E_0\) is a static envelope in \(S\), \(U\) is a smooth scale-dependent drift in \(S\) and \(D^2\), and \(R_{45}\) is the dominant modular resonant component after removal of the smooth drift.
+\end{conjecture}
+
+No asymptotic bound is proved here for \(\mathcal{E}\).
+
+\section{Limitations}
+
+The validation is finite-range and computational. The primary reported validation is based on the V15 causal logarithmic residual. The law has not yet been converted into an analytic error bound. The result does not prove the Riemann Hypothesis, the twin prime conjecture, Goldbach's conjecture, or any other open asymptotic theorem.
+
+\section{Future work}
+
+Future work includes fixed-gap marginalization, global-error accumulation, and analytic sieve interpretation of the resonant term. The present work should be viewed as a local structural conjecture and an experimental guide for future analytic investigation.
+
+\section{Disclosure of AI assistance}
+
+The author used AI-assisted systems, including Gemini 3 and ChatGPT, as interactive research assistants during the exploratory, coding, diagnostic, and drafting phases of this work. Their use included code prototyping, debugging, construction of diagnostic tests, adversarial critique of hypotheses, summarization of numerical outputs, and drafting support. All experiments were executed locally by the author, and all reported claims, mathematical formulations, code selections, and interpretations were reviewed and curated by the author. The author assumes full responsibility for the manuscript. No AI system is listed as an author.
+
+\appendix
+
+\section{Notation summary}
+
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning\\
+\midrule
+\(p_n\) & \(n\)-th prime\\
+\(g_1\) & \(p_{n+1}-p_n\)\\
+\(g_2\) & \(p_{n+2}-p_{n+1}\)\\
+\(S\) & \(g_1+g_2\)\\
+\(D\) & \(g_2-g_1\)\\
+\(A\) & \(g_1/2\)\\
+\(B\) & \(g_2/2\)\\
+\(t\) & \(\log\log p\)\\
+\(E_0\) & static envelope\\
+\(U\) & smooth scale-dependent drift\\
+\(R_{45}\) & modular resonant term\\
+\(\mathcal{E}\) & remaining residual error\\
+\bottomrule
+\end{tabular}
+
+\begin{thebibliography}{9}
+
+\bibitem{HL1923}
+G. H. Hardy and J. E. Littlewood.
+\newblock Some problems of Partitio Numerorum III: On the expression of a number as a sum of primes.
+\newblock \emph{Acta Mathematica}, 1923.
+
+\bibitem{GPY2009}
+D. A. Goldston, J. Pintz, and C. Y. Yıldırım.
+\newblock Primes in tuples I.
+\newblock \emph{Annals of Mathematics}, 2009.
+
+\bibitem{Zhang2014}
+Y. Zhang.
+\newblock Bounded gaps between primes.
+\newblock \emph{Annals of Mathematics}, 2014.
+
+\bibitem{Maynard2015}
+J. Maynard.
+\newblock Small gaps between primes.
+\newblock \emph{Annals of Mathematics}, 2015.
+
+\bibitem{IK}
+H. Iwaniec and E. Kowalski.
+\newblock \emph{Analytic Number Theory}.
+\newblock AMS Colloquium Publications.
+
+\end{thebibliography}
+
+\end{document}
