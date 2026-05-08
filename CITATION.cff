@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software or white paper, please cite it as below."
+title: "A Three-Layer Empirical Residual Law for Consecutive Prime Gaps: Drift and Modular Resonance"
+type: software
+authors:
+  - family-names: "Cano Gregorio"
+    given-names: "Jose Antonio"
+    affiliation: "Independent Researcher"
+    orcid: "https://orcid.org/0009-0004-1989-0987"
+repository-code: "https://github.com/mathematical-concepts/v44-prime-gap-residual-law"
+url: "https://github.com/mathematical-concepts/v44-prime-gap-residual-law"
+abstract: "Empirical reproducibility package for a three-layer residual law for consecutive prime-gap pairs, including a frozen V44 predictor, aggregated validation data, official figures, and a white paper. This release supports an empirical structural conjecture and does not claim to prove RH, the twin prime conjecture, or Goldbach's conjecture."
+keywords:
+  - prime gaps
+  - computational number theory
+  - empirical number theory
+  - sieve residuals
+  - modular resonance
+  - reproducibility
+license: MIT
+version: "0.2"
+date-released: "2026-05-08"

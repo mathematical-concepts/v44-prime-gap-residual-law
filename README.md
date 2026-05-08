@@ -92,13 +92,19 @@ pdflatex whitepaper_three_layer_prime_gap_residual_law.tex
 ## Whitepaper
 
 The draft white paper describing the empirical law, validation methods, and structural conjectures can be found in the repository root and the `paper/` directory:
-* [WHITEPAPER.md](WHITEPAPER.md) (Markdown Version)
-* `paper/whitepaper_three_layer_prime_gap_residual_law.tex` (LaTeX Source)
+* [WHITEPAPER.md](WHITEPAPER.md) (Markdown version)
+* [paper/whitepaper_three_layer_prime_gap_residual_law.pdf](paper/whitepaper_three_layer_prime_gap_residual_law.pdf) (PDF)
+* `paper/whitepaper_three_layer_prime_gap_residual_law.tex` (LaTeX source)
+
+## Citation
+
+If you use this repository, please cite the GitHub/Zenodo release. Citation metadata is provided in `CITATION.cff`.
 
 ## AI Assistance Disclosure
 
 This repository contains code and analysis developed during an exploratory research process assisted by AI systems, including Gemini 3 and ChatGPT. AI tools were used for code prototyping, debugging, diagnostic design, interpretation support, and drafting assistance.
-The author acknowledges the role of AI-assisted dialogue in accelerating the exploratory cycle of hypothesis generation, implementation, falsification, and refinement.
+
+The author acknowledges the role of AI-assisted dialogue in accelerating the exploratory cycle of hypothesis generation, implementation, falsification, and refinement. All scripts, reported numerical results, mathematical formulations, and manuscript claims were reviewed and curated by the human author, who remains solely responsible for the repository contents.
 
 ## License
 This project is licensed under the MIT License.
