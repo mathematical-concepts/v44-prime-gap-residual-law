@@ -503,7 +503,7 @@ def _corr(a: np.ndarray, b: np.ndarray) -> float:
 def print_formula(pred: FrozenV44Predictor) -> None:
     c = pred.cal
     print("=" * 88)
-    print("V44_primes_predicor_frozen")
+    print("V44_primes_predictor_frozen")
     print("=" * 88)
     print("Formula:")
     print("  Delta(S,D;p) = E0(S) + U(S,D;t) + R45(S,D;t)")
